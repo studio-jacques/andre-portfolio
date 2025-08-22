@@ -5,33 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Andre Jacques — Photography</title>
   <link rel="stylesheet" href="assets/styles.css" />
-  <script src="assets/script.js" defer></script>
+  <script defer src="assets/script.js"></script>
 </head>
 <body>
-  <header class="site-header">
+  <!-- Persistent centered floating menu (appears on all pages) -->
+  <div class="center-menu" role="navigation" aria-label="Primary">
     <a class="brand" href="index.html">Andre&nbsp;Jacques</a>
-    <nav>
+    <div class="menu-links">
       <a href="index.html" aria-current="page">Work</a>
-      <a href="about.html">About</a>
       <a href="sandbox.html">Sandbox</a>
-    </nav>
-  </header>
+      <a href="about.html">About</a>
+    </div>
+  </div>
 
-  <main>
-    <section class="gallery">
-      <figure><a href="images/photo1.jpg"><img src="images/photo1.jpg" alt="Photo 1" /></a></figure>
-      <figure><a href="images/photo2.jpg"><img src="images/photo2.jpg" alt="Photo 2" /></a></figure>
-      <figure><a href="images/photo3.jpg"><img src="images/photo3.jpg" alt="Photo 3" /></a></figure>
-    </section>
+  <main class="page page--work">
+    <div class="container">
+      <section id="gallery" class="gallery" aria-live="polite"></section>
+    </div>
   </main>
 
   <footer class="site-footer">
     <small>&copy; <span id="year"></span> Andre Jacques</small>
   </footer>
 
-  <div id="lightbox" class="lightbox" aria-hidden="true">
-    <button class="close" aria-label="Close">&times;</button>
-    <img class="lightbox-img" alt="" />
+  <!-- Lightbox that preserves the floating menu above it -->
+  <div id="lightbox" class="lightbox" aria-hidden="true" aria-modal="true" role="dialog">
+    <button class="lb-btn lb-close" aria-label="Close">&times;</button>
+    <button class="lb-btn lb-prev" aria-label="Previous image">&#10094;</button>
+    <img id="lightbox-img" class="lightbox-img" alt="" />
+    <button class="lb-btn lb-next" aria-label="Next image">&#10095;</button>
   </div>
 </body>
 </html>
