@@ -3,32 +3,37 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About — Andre Jacques</title>
+  <title>About — André Jacques</title>
+  <!-- Add Adobe Fonts kit link for Big Caslon if available -->
+  <!-- <link rel="stylesheet" href="https://use.typekit.net/xxxx.css"> -->
   <link rel="stylesheet" href="assets/styles.css" />
   <script defer src="assets/script.js"></script>
 </head>
 <body>
-  <div class="center-menu" role="navigation" aria-label="Primary">
-    <a class="brand" href="index.html">Andre&nbsp;Jacques</a>
-    <div class="menu-links">
-      <a href="index.html">Work</a>
+  
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <nav class="menu" aria-label="Primary">
+      <a class="brand" href="index.html">André&nbsp;Jacques</a>
+      <a href="about.html">About</a>
       <a href="sandbox.html">Sandbox</a>
-      <a href="about.html" aria-current="page">About</a>
-    </div>
+    </nav>
   </div>
+</header>
+
 
   <main class="page page--about">
     <div class="container narrow">
-      <h1>About</h1>
-      <p>Andre Jacques is a London-based photographer working across fashion, music, and portraiture. His work blends documentary and fantasy to explore connection, identity, and presence.</p>
-      <p>Contact: <a href="mailto:hello@example.com">hello@example.com</a></p>
+      <h1 class="visually-hidden">About</h1>
+      <img src="images/portrait.jpg" alt="Portrait of André Jacques" class="about-portrait" />
+      <div class="about-copy">
+        <p>André Jacques is a British-Jamaican photographer based in London. Working across fashion, beauty, and portraiture, Jacques’ photographs delve into the nuanced intersections of identity, intimacy, and empathy—navigating the delicate space between the lens and the subject.</p>
+        <p>With a focus on craft, he explores rich colours and textures through analog darkroom techniques. His photography has been published in <em>British Vogue</em>, <em>The Guardian</em>, exhibited in <em>The Room That Shared</em> with Shanti Bell, and a winner of the <em>British Journal of Photography’s Portrait of Britain</em> award.</p>
+        <p class="about-contact">@andreiacques<br><a href="mailto:studio@andrejacques.com">studio@andrejacques.com</a></p>
+      </div>
     </div>
   </main>
 
-  <footer class="site-footer">
-    <small>&copy; <span id="year"></span> Andre Jacques</small>
-  </footer>
-
-  <button id="theme-toggle" class="theme-toggle"></button>
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"></button>
 </body>
 </html>

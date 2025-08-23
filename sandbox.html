@@ -3,31 +3,32 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sandbox — Andre Jacques</title>
+  <title>Sandbox — André Jacques</title>
+  <!-- Add Adobe Fonts kit link for Big Caslon if available -->
+  <!-- <link rel="stylesheet" href="https://use.typekit.net/xxxx.css"> -->
   <link rel="stylesheet" href="assets/styles.css" />
   <script defer src="assets/script.js"></script>
 </head>
 <body>
-  <div class="center-menu" role="navigation" aria-label="Primary">
-    <a class="brand" href="index.html">Andre&nbsp;Jacques</a>
-    <div class="menu-links">
-      <a href="index.html">Work</a>
-      <a href="sandbox.html" aria-current="page">Sandbox</a>
+  
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <nav class="menu" aria-label="Primary">
+      <a class="brand" href="index.html">André&nbsp;Jacques</a>
       <a href="about.html">About</a>
-    </div>
+      <a href="sandbox.html">Sandbox</a>
+    </nav>
   </div>
+</header>
+
 
   <main class="page page--sandbox">
     <div class="container narrow">
       <h1>Sandbox</h1>
-      <p>This page is for experiments, writings, and ideas. Add whatever you like here.</p>
+      <p>This page is for experiments, writings, notes, and ideas.</p>
     </div>
   </main>
 
-  <footer class="site-footer">
-    <small>&copy; <span id="year"></span> Andre Jacques</small>
-  </footer>
-
-  <button id="theme-toggle" class="theme-toggle"></button>
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"></button>
 </body>
 </html>

@@ -1,73 +1,100 @@
+/* Typography: Big Caslon requested; falls back to classic serif if not available.
+   If you have an Adobe Fonts kit, include it in the HTML head; then set font-family: 'big-caslon', serif; */
+@font-face { font-family: "SystemSerifFallback"; src: local("Times New Roman"); }
+
 :root {
   --bg: #ffffff;
   --fg: #0a0a0a;
   --muted: #7a7a7a;
   --gap: 24px;
-  --container: 1200px;
+  --container: 1100px;
 }
 
 body.dark {
   --bg: #0a0a0a;
   --fg: #f5f5f5;
-  --muted: #aaa;
+  --muted: #a8a8a8;
 }
 
 * { box-sizing: border-box; }
 html, body { height: 100%; }
 body {
   margin: 0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  /* Use Big Caslon name if your kit provides it; fallback to Georgia/Times */
+  font-family: "Big Caslon", Georgia, "Times New Roman", SystemSerifFallback, serif;
+  font-size: 17.33px;      /* ~13pt */
+  letter-spacing: 0.02em;  /* 2% character spacing */
   color: var(--fg);
   background: var(--bg);
-  transition: background 0.4s, color 0.4s;
+  transition: background .3s, color .3s;
+}
+
+/* Accessible hide */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px; width: 1px; overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
 }
 
 a { color: inherit; text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-.center-menu {
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+/* Header: single line "André Jacques    About    Sandbox" */
+.site-header {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  padding: 18px 16px;
+}
+.header-inner {
+  width: min(var(--container), 92vw);
+}
+.menu {
+  display: flex;
+  justify-content: space-between; /* spreads brand | About | Sandbox across one line */
   align-items: center;
-  gap: 12px;
-  z-index: 1001;
-  text-align: center;
 }
+.menu a { font-weight: 500; }
+.menu .brand { font-weight: 600; }
 
-.center-menu .brand { font-size: clamp(20px, 3.5vw, 40px); font-weight: 600; }
-.center-menu .menu-links { display: flex; gap: 20px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; }
-.center-menu .menu-links a[aria-current="page"] { text-decoration: underline; }
-
+/* Layout containers */
 .page { min-height: 100vh; }
-.container { max-width: var(--container); margin: 80px auto 120px auto; padding: 0 24px; }
+.container { width: min(var(--container), 92vw); margin: 28px auto; }
+.container.narrow { width: min(760px, 92vw); }
 
-.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: var(--gap); }
-.gallery img { width: 100%; height: auto; display: block; transition: transform .25s ease; }
-.gallery img:hover { transform: scale(1.02); }
-
-.site-footer {
-  position: fixed; left: 0; right: 0; bottom: 0;
-  text-align: center; font-size: 12px; padding: 10px;
-  color: var(--muted); background: var(--bg);
+/* Masonry (column-based) — curated feel, not a rigid grid */
+.gallery.masonry {
+  column-count: 3;
+  column-gap: var(--gap);
 }
+@media (max-width: 980px) { .gallery.masonry { column-count: 2; } }
+@media (max-width: 640px) { .gallery.masonry { column-count: 1; } }
+.gallery.masonry img {
+  width: 100%;
+  display: block;
+  margin: 0 0 var(--gap);
+  break-inside: avoid;
+  transition: transform .25s ease;
+}
+.gallery.masonry img:hover { transform: scale(1.015); }
 
-.lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.92); display: none; align-items: center; justify-content: center; z-index: 1000; }
-.lightbox.show { display: flex; }
-.lightbox-img { max-width: 90%; max-height: 90%; }
-.lb-btn { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; color: #fff; font-size: 40px; cursor: pointer; }
-.lb-prev { left: 20px; }
-.lb-next { right: 20px; }
-.lb-close { top: 20px; right: 20px; transform: none; }
+/* About */
+.about-portrait {
+  width: 100%;
+  max-width: 360px;
+  border-radius: 8px;
+  margin: 0 0 18px;
+}
+.about-copy p { margin: 0 0 14px; }
+.about-contact a { text-decoration: underline; }
 
+/* Minimal square theme toggle */
 .theme-toggle {
-  position: fixed; bottom: 20px; right: 20px;
-  width: 20px; height: 20px;
+  position: fixed;
+  bottom: 18px; right: 18px;
+  width: 18px; height: 18px;
   background: var(--fg);
   border: none; cursor: pointer;
-  transition: background 0.4s;
+  transition: background .3s;
   z-index: 1100;
 }

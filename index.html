@@ -3,39 +3,30 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Andre Jacques — Photography</title>
+  <title>André Jacques — Photography</title>
+  <!-- If you have an Adobe Fonts kit for Big Caslon, add it below -->
+  <!-- <link rel="stylesheet" href="https://use.typekit.net/xxxx.css"> -->
   <link rel="stylesheet" href="assets/styles.css" />
   <script defer src="assets/script.js"></script>
 </head>
 <body>
-  <div class="center-menu" role="navigation" aria-label="Primary">
-    <a class="brand" href="index.html">Andre&nbsp;Jacques</a>
-    <div class="menu-links">
-      <a href="index.html" aria-current="page">Work</a>
-      <a href="sandbox.html">Sandbox</a>
+  
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <nav class="menu" aria-label="Primary">
+      <a class="brand" href="index.html">André&nbsp;Jacques</a>
       <a href="about.html">About</a>
-    </div>
+      <a href="sandbox.html">Sandbox</a>
+    </nav>
   </div>
+</header>
+
 
   <main class="page page--work">
-    <div class="container">
-      <section id="gallery" class="gallery" aria-live="polite"></section>
-    </div>
+    <section id="gallery" class="gallery masonry" aria-live="polite"></section>
   </main>
 
-  <footer class="site-footer">
-    <small>&copy; <span id="year"></span> Andre Jacques</small>
-  </footer>
-
-  <!-- Lightbox -->
-  <div id="lightbox" class="lightbox" aria-hidden="true" aria-modal="true" role="dialog">
-    <button class="lb-btn lb-close" aria-label="Close">&times;</button>
-    <button class="lb-btn lb-prev" aria-label="Previous image">&#10094;</button>
-    <img id="lightbox-img" class="lightbox-img" alt="" />
-    <button class="lb-btn lb-next" aria-label="Next image">&#10095;</button>
-  </div>
-
-  <!-- Theme toggle button -->
-  <button id="theme-toggle" class="theme-toggle"></button>
+  <!-- Minimal square theme toggle -->
+  <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"></button>
 </body>
 </html>
