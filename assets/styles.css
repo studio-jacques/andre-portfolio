@@ -1,4 +1,3 @@
-/* Minimal, elegant layout inspired by a centered floating menu aesthetic */
 :root {
   --bg: #ffffff;
   --fg: #0a0a0a;
@@ -7,15 +6,20 @@
   --container: 1200px;
 }
 
+body.dark {
+  --bg: #0a0a0a;
+  --fg: #f5f5f5;
+  --muted: #aaa;
+}
+
 * { box-sizing: border-box; }
 html, body { height: 100%; }
 body {
   margin: 0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
   color: var(--fg);
   background: var(--bg);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+  transition: background 0.4s, color 0.4s;
 }
 
 a { color: inherit; text-decoration: none; }
@@ -31,105 +35,39 @@ a:hover { text-decoration: underline; }
   align-items: center;
   gap: 12px;
   z-index: 1001;
-  pointer-events: auto;
   text-align: center;
 }
 
-.center-menu .brand {
-  font-size: clamp(20px, 3.5vw, 40px);
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  text-decoration: none;
-}
-
-.center-menu .menu-links {
-  display: flex;
-  gap: 20px;
-  font-size: 14px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
+.center-menu .brand { font-size: clamp(20px, 3.5vw, 40px); font-weight: 600; }
+.center-menu .menu-links { display: flex; gap: 20px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; }
 .center-menu .menu-links a[aria-current="page"] { text-decoration: underline; }
 
 .page { min-height: 100vh; }
-.container {
-  max-width: var(--container);
-  margin: 80px auto 120px auto;
-  padding: 0 24px;
-}
+.container { max-width: var(--container); margin: 80px auto 120px auto; padding: 0 24px; }
 
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: var(--gap);
-}
-
-.gallery figure { margin: 0; }
-.gallery img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 2px;
-  transition: transform .25s ease, opacity .25s ease;
-  will-change: transform;
-}
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: var(--gap); }
+.gallery img { width: 100%; height: auto; display: block; transition: transform .25s ease; }
 .gallery img:hover { transform: scale(1.02); }
 
 .site-footer {
-  position: fixed;
-  left: 0; right: 0; bottom: 0;
-  display: flex;
-  justify-content: center;
-  padding: 10px 16px;
-  font-size: 12px;
-  color: var(--muted);
-  background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.85) 40%, #fff 100%);
-  backdrop-filter: blur(2px);
-  z-index: 500;
+  position: fixed; left: 0; right: 0; bottom: 0;
+  text-align: center; font-size: 12px; padding: 10px;
+  color: var(--muted); background: var(--bg);
 }
 
-.lightbox {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.92);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
+.lightbox { position: fixed; inset: 0; background: rgba(0,0,0,0.92); display: none; align-items: center; justify-content: center; z-index: 1000; }
 .lightbox.show { display: flex; }
+.lightbox-img { max-width: 90%; max-height: 90%; }
+.lb-btn { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; color: #fff; font-size: 40px; cursor: pointer; }
+.lb-prev { left: 20px; }
+.lb-next { right: 20px; }
+.lb-close { top: 20px; right: 20px; transform: none; }
 
-.lightbox-img {
-  max-width: min(92vw, 1400px);
-  max-height: 86vh;
-}
-
-.lb-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 40px;
-  line-height: 1;
-  cursor: pointer;
-  padding: 8px 12px;
-  opacity: 0.85;
-}
-.lb-prev { left: 24px; }
-.lb-next { right: 24px; }
-.lb-close {
-  top: 18px;
-  right: 18px;
-  transform: none;
-  font-size: 36px;
-}
-
-@media (max-width: 640px) {
-  .container { margin-top: 120px; }
-  .center-menu { gap: 8px; }
-  .center-menu .menu-links { gap: 14px; font-size: 12px; }
+.theme-toggle {
+  position: fixed; bottom: 20px; right: 20px;
+  width: 20px; height: 20px;
+  background: var(--fg);
+  border: none; cursor: pointer;
+  transition: background 0.4s;
+  z-index: 1100;
 }
