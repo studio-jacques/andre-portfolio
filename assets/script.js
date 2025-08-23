@@ -1,9 +1,9 @@
-// Theme toggle with persistence
+window.addEventListener('load', () => document.body.classList.remove('no-transition'));
 (function() {
   const btn = document.getElementById('theme-toggle');
   if (!btn) return;
   const saved = localStorage.getItem('theme');
-  if (saved === 'dark') { document.body.classList.add('dark'); }
+  if (saved === 'dark') document.body.classList.add('dark');
   btn.style.background = getComputedStyle(document.body).getPropertyValue('--fg').trim();
   btn.addEventListener('click', () => {
     document.body.classList.toggle('dark');
@@ -12,46 +12,32 @@
   });
 })();
 
-// Masonry gallery loader with infinite loop (repeats images when near bottom)
 (async function() {
   const gallery = document.getElementById('gallery');
   if (!gallery) return;
-
-  // Source image list from images.json (ordered/curated)
-  let files = null;
+  let manifest;
   try {
     const res = await fetch('images.json', { cache: 'no-store' });
-    if (res.ok) files = await res.json();
-  } catch (e) {}
+    if (res.ok) manifest = await res.json();
+  } catch {}
+  if (!manifest) return;
 
-  // Fallback to numbered sequence if no JSON
-  if (!files) {
-    files = [];
-    for (let i = 1; i <= 300; i++) files.push('photo' + i + '.jpg');
+  function createTile(entry) {
+    const cfg = typeof entry === 'string' ? { file: entry } : entry;
+    const div = document.createElement('div');
+    div.className = 'tile' + (cfg.size ? (' s-' + cfg.size) : '');
+    const img = document.createElement('img');
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    img.src = 'images/' + cfg.file;
+    img.alt = cfg.alt || cfg.file;
+    div.appendChild(img);
+    return div;
   }
 
-  function appendBatch() {
-    // Append one pass of all files
-    for (const f of files) {
-      const img = document.createElement('img');
-      img.loading = 'lazy';
-      img.decoding = 'async';
-      img.src = 'images/' + f;
-      gallery.appendChild(img);
-    }
-  }
-
-  appendBatch();
-
-  // Infinite loop: when near bottom, append again
-  let ticking = false;
+  function appendPass() { for (const item of manifest) gallery.appendChild(createTile(item)); }
+  appendPass();
   window.addEventListener('scroll', () => {
-    if (ticking) return;
-    ticking = true;
-    requestAnimationFrame(() => {
-      const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 200;
-      if (nearBottom) appendBatch();
-      ticking = false;
-    });
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 200) appendPass();
   }, { passive: true });
 })();

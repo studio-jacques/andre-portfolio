@@ -1,5 +1,11 @@
 [
-  "photo1.jpg",
-  "photo2.jpg",
-  "photo3.jpg"
+  {
+    "file": "photo1.jpg"
+  },
+  {
+    "file": "photo2.jpg"
+  },
+  {
+    "file": "photo3.jpg"
+  }
 ]
