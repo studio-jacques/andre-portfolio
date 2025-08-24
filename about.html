@@ -6,6 +6,7 @@
   <title>About — André Jacques</title>
   <link rel="stylesheet" href="assets/styles.css" />
   <script defer src="assets/script.js"></script>
+  <script defer src="assets/tuner.js"></script>
 </head>
 <body class="no-transition">
   
@@ -28,5 +29,49 @@
     </div>
   </main>
   <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"></button>
+  
+<!-- Design Tuner -->
+<button id="tuner-toggle" class="tuner-toggle" title="Design Tuner" aria-label="Open design tuner">⚙︎</button>
+<aside id="tuner" class="tuner" aria-label="Design controls" hidden>
+  <div class="tuner-header">
+    <strong>Design Tuner</strong>
+    <button id="tuner-close" aria-label="Close">✕</button>
+  </div>
+  <div class="tuner-body">
+    <label>Frame Width (px)
+      <input type="range" id="var-frame" min="960" max="1920" step="10">
+      <output id="out-frame"></output>
+    </label>
+    <label>Text Width (px)
+      <input type="range" id="var-container" min="640" max="1400" step="10">
+      <output id="out-container"></output>
+    </label>
+    <label>Gallery Columns
+      <input type="range" id="var-columns" min="1" max="6" step="1">
+      <output id="out-columns"></output>
+    </label>
+    <label>Gutter (px)
+      <input type="range" id="var-gap" min="8" max="64" step="2">
+      <output id="out-gap"></output>
+    </label>
+    <label>Header Left Offset (%)
+      <input type="range" id="var-header-left" min="5" max="45" step="1">
+      <output id="out-header-left"></output>
+    </label>
+    <label>Font Size (px)
+      <input type="range" id="var-font" min="12" max="24" step="0.5">
+      <output id="out-font"></output>
+    </label>
+    <label>Letter Spacing (em)
+      <input type="range" id="var-track" min="0" max="0.08" step="0.005">
+      <output id="out-track"></output>
+    </label>
+  </div>
+  <div class="tuner-actions">
+    <button id="tuner-reset">Reset</button>
+    <button id="tuner-save">Save</button>
+  </div>
+</aside>
+
 </body>
 </html>
