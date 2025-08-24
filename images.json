@@ -1,11 +1,22 @@
 [
-  {
-    "file": "ajstudio_image_01.jpg"
-  },
-  {
-    "file": "photo2.jpg"
-  },
-  {
-    "file": "photo3.jpg"
-  }
+  { "file": "ajstudio_image_01.jpg",     "alt": "Personal" },
+  { "file": "ajstudio_image_02.jpg",  "alt": "Personal" },
+  { "file": "ajstudio_image_03.1.jpg","alt": "British Vogue 2024" },
+  { "file": "ajstudio_image_03.jpg",    "alt": "Personal" },
+  { "file": "ajstudio_image_04.jpg",     "alt": "Personal" },
+  { "file": "ajstudio_image_05.jpg",  "alt": "Personal" },
+  { "file": "ajstudio_image_06.jpg","alt": "Personal" },
+  { "file": "ajstudio_image_07.jpg",    "alt": "Personal" },
+  { "file": "ajstudio_image_08.jpg",     "alt": "Personal" },
+  { "file": "ajstudio_image_09.jpg",  "alt": "Personal" },
+  { "file": "ajstudio_image_10.jpg","alt": "Personal" },
+  { "file": "ajstudio_image_11.jpg",    "alt": "Personal" },
+  { "file": "ajstudio_image_12.jpg",     "alt": "Personal" },
+  { "file": "ajstudio_image_13.jpg",  "alt": "Personal" },
+  { "file": "ajstudio_image_14.jpg","alt": "Personal" },
+  { "file": "ajstudio_image_15.jpg",    "alt": "Personal" },
+  { "file": "ajstudio_image_16.jpg",     "alt": "Personal" },
+  { "file": "ajstudio_image_17.jpg",  "alt": "Personal" },
+  { "file": "ajstudio_image_18.jpg","alt": "Personal" },
+  { "file": "ajstudio_image_19.jpg",    "alt": "Personal" }
 ]
