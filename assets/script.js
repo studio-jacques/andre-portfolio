@@ -37,10 +37,7 @@ window.addEventListener('load', () => document.body.classList.remove('no-transit
     return div;
   }
 
-  function appendPass() {
-    for (const item of manifest) gallery.appendChild(createTile(item));
-  }
-
+  function appendPass() { for (const item of manifest) gallery.appendChild(createTile(item)); }
   appendPass();
   window.addEventListener('scroll', () => {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 200) appendPass();

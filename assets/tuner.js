@@ -12,11 +12,11 @@
     columns: ['--columns', '', 'var-columns', 'out-columns'],
     gap: ['--gap', 'px', 'var-gap', 'out-gap'],
     headerLeft: ['--header-left', '%', 'var-header-left', 'out-header-left'],
+    menuGap: ['--menu-gap', 'px', 'var-menu-gap', 'out-menu-gap'],
     font: ['--font-size', 'px', 'var-font', 'out-font'],
     track: ['--tracking', 'em', 'var-track', 'out-track']
   };
 
-  // Load saved values
   const saved = JSON.parse(localStorage.getItem('designVars') || '{}');
   for (const key in inputs) {
     const [varName, unit, inputId, outId] = inputs[key];
@@ -27,7 +27,6 @@
     if (input) {
       input.value = isNaN(parsed) ? input.value : parsed;
       out.textContent = (parsed + (unit ? unit : ''));
-      // Apply to root
       root.style.setProperty(varName, parsed + (unit || ''));
       input.addEventListener('input', () => {
         const val = input.value + (unit || '');
